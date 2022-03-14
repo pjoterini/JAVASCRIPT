@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap");
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Oswald", sans-serif;
+  background-color: rgb(230, 230, 230);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+:root {
+  --containerWidth: 500px;
+}
+
+.selections {
+  width: var(--containerWidth);
+  display: flex;
+  justify-content: space-around;
+}
+
+.selection {
+  cursor: pointer;
+  font-size: 2rem;
+  border: none;
+  background: none;
+  transition: 500ms;
+}
+
+.selection:hover {
+  transform: scale(1.5);
+}
+
+.results {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  width: var(--containerWidth);
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  align-items: center;
+}
+
+.result-score {
+  margin-left: 0.1rem;
+  font-size: 0.5rem;
+  color: #333;
+}
+
+.result-selection {
+  opacity: 0.5;
+}
+
+.result-selection.winner {
+  opacity: 1;
+  font-size: 2rem;
+}

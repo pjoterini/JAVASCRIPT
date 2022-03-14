@@ -1,1 +1,1 @@
-# WebDeVSimplified_JS
+JS tutorials from WDS
