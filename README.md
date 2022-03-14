@@ -1,1 +1,1 @@
-JS tutorials from WDS
+completed JS tutorials
