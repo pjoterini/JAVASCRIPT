@@ -3,7 +3,9 @@ const bg = document.querySelector(".bg")
 
 let load = 0
 
-let int = setInterval(blurrying, 30)
+setInterval(blurrying, 30)
+
+
 
 function blurrying() {
     load++
