@@ -23,3 +23,13 @@
 
 // OUTER FUNCTION NIE MA dostępu do zmiennych INNER FUNCTION
 
+// 
+
+for(var i = 1; i <= 5; i++) {
+    function calculate(x) {
+        setTimeout(function() {
+            console.log(x)
+        }, x * 1000)
+    }
+    calculate(i)
+}
