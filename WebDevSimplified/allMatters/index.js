@@ -23,7 +23,9 @@
 
 // OUTER FUNCTION NIE MA dostępu do zmiennych INNER FUNCTION
 
-// 
+// REFERENCE vs VALUE
+
+// wartość prymitywnych zmiennych zapisywana jest w pamięci jako VALUE, każda jest unikatowa np. dla > let x = 5; let y = x obydwie zmienne  mają oddzielne VALUE. Gdy w ten sam sposób zapiszemy arraye to obydwa będą mieć to samo REFERENCE VALUE czyli 0x01 zapisane w oddzielnym bloku pamięci. zmiana wartości jednego z arrayow zmieni REFERENCE VALUE a zatem wartość obydwóch arrayów zmieni się.
 
 for(var i = 1; i <= 5; i++) {
     function calculate(x) {
@@ -33,3 +35,46 @@ for(var i = 1; i <= 5; i++) {
     }
     calculate(i)
 }
+
+
+// FUNCTIONAL PROGRAMMING 
+
+const radiuses = [3, 1, 2, 4]
+
+const area = function (param) {
+    return Math.PI * param * param
+}
+
+
+const calculateSmth = function (radius, logic) {
+    const output = []
+    for (let i = 0; i < radiuses.length; i++) {
+        output.push(logic(radius[i]))
+    }
+    return output
+}
+
+console.log(calculateSmth(radiuses, area))
+
+// PROMISES
+
+let k = [321,312,3,213]
+
+let p = new Promise((resolve, reject) => {
+let a = 1 + 1
+if (a == 2) {
+    resolve(5)
+} else {
+    reject()
+}
+})
+
+p.then((added) => {
+    k.push(added)
+    console.log(k)
+}). catch((messgae) => {
+    console.log('this is in the catch' + messgae)
+})
+
+
+ 
