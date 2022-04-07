@@ -76,5 +76,45 @@ p.then((added) => {
     console.log('this is in the catch' + messgae)
 })
 
+// THIS KEYWORD
 
- 
+// Implicit binding - cokolwiek znajduje się na lewo od przywoływanej funkcji/metody jest odnośnikiem 'this'
+let me = {
+    name: 'pjoter',
+    call: function() {
+        console.log(this.name)
+    },
+    nicknames: ['pjoti', 'maci'],
+    callin: function() {
+        this.nicknames.forEach(name => {
+        console.log(this.name)
+    })},
+    insider: {
+        surname: 'gorski',
+        check: function() {
+            console.log(this.surname)
+        }
+    }
+}
+me.call()
+me.callin()
+me.insider.check()
+// Explicit binding - dosadnie określamy co jest odnośnikiem 'this' przy pomocy metod call, apply, bind gdy np. funkcja znajduje się POZA obiektem.
+let sayName = function(){
+    console.log('my name is ' + this.name)
+}
+sayName.call(me)
+//  PIERWSZY ARGUMENT to nasze ODNIESIENIEn pozostałe działają jak zwykłe argumenty
+let languages = ['js', 'ruby']
+let sayNameAndLangs = function(lang1, lang2){
+    console.log('my name is ' + this.name + lang1 + lang2)
+}
+sayNameAndLangs.call(me, languages[0], languages[1])
+// APPLY pozwala na łatwiejsze uzywanie arrayów jako argumentów
+sayNameAndLangs.apply(me, languages)
+// BIND działa jak CALL ale zamiast PRZYWOŁYWAĆ DANĄ FUNKCJE, ZWRACA JA JAKO ZMIENNA DO PRZYWOŁANIA PÓŹNIEJ
+let newFn = sayNameAndLangs.bind(me, languages[0], languages[1])
+newFn()
+// w przypadku użycia constructor function nowopowstały obiekt otrzymuje odnośnik 'this'
+
+
