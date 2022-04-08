@@ -34,7 +34,7 @@
 function getPosts() {
     setTimeout(() => {
        let output = ''
-       posts.forEach((post, index) =>{
+       posts.forEach((post, index) => {
        output += `<li>${post.title}</li>`
        
        document.body.innerHTML = output
@@ -59,13 +59,27 @@ function createPost(post) {
    
 }
 
-// createPost({ title: 'post three', body: 'this is post three'})
-// .then(getPosts)
+createPost({ title: 'post three', body: 'this is post three'}).then(getPosts)
 // .catch(err => console.log(err))
 
-// PROMISE.ALL
-const promise1 = Promise.resolve('hello') 
-const promise2 = 10 
-const promise3 = new Promise((resolve, reject) =>  setTimeout(resolve, 2000,'goodbye'))
+// ASYNC AWAIT
 
-Promise.all([promise1, promise2, promise3]).then(values => console.log(values))
+// async function init() {
+//    await createPost({ title: 'post three', body: 'this is post three'})
+
+//    getPosts()
+// }
+
+// init()
+
+// PROMISE.ALL
+
+// const promise1 = Promise.resolve('hello') 
+// const promise2 = 10 
+// const promise3 = new Promise((resolve, reject) =>  setTimeout(resolve, 2000,'goodbye'))
+// const promise4 = fetch('https://jsonplaceholder.typicode.com/users').then(res => res.json())
+
+// Promise.all([promise1, promise2, promise3, promise4]).then(values => console.log(values))
+
+
+
