@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <img src="" id="img" alt="" width="700" />
+
+    <script>
+      console.log("fetching sum things");
+
+      catchImg().catch((error) => {
+        console.error("error");
+      });
+
+      async function catchImg() {
+        const response = await fetch("imgs");
+        const blobs = await response.forEach((response) => {
+          response.blob();
+        });
+        console.log(blobs);
+        // document.getElementById("img").src = URL.createObjectURL(blobs[0]);
+      }
+    </script>
+  </body>
+</html>
