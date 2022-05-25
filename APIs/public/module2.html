@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>module2</title>
+  </head>
+  <body>
+    <script>
+      if ("geolocation" in navigator) {
+        console.log("available");
+        navigator.geolocation.getCurrentPosition((position) => {
+          const lat = position.coords.latitude;
+          document.getElementById("lat").textContent = lat;
+          const lon = position.coords.longitude;
+          document.getElementById("lon").textContent = lon;
+
+          const data = { lat, lon };
+          const options = {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          };
+          fetch("/api", options);
+        });
+      } else {
+        console.log("not available");
+      }
+    </script>
+    <h1>sup</h1>
+    <p>latitude <span id="lat"></span>&deg;</p>
+    <p>longitude <span id="lon"></span>&deg;</p>
+    <a href="/public/hello.html">Go to Hello.html</a>
+  </body>
+</html>
