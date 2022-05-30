@@ -18,16 +18,17 @@ database.loadDatabase()
 // })
 
 
-app.get('/', (request, response) => {
-    response.send('Welcome')
+app.get('/api', (request, response) => {
+    database.find({}, (err, data) => {
+      response.json(data)
+    })
 })
 
 app.post('/api', (request, response) => {
+  console.log(request.body)
     const data = request.body
     const timestamp = Date.now()
     data.timestamp = timestamp
     database.insert(data)
-    response.json({
-      status: 'success'
-    })
+    response.json(data)
 })

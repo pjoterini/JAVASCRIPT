@@ -1,0 +1,13 @@
+h1 {
+    background-color: blue;
+    color: white;
+}
+
+div {
+    padding: 1rem;
+    background-color: antiquewhite;
+}
+
+#container-div {
+    background-color: white;
+}
