@@ -1,5 +1,7 @@
-const express = require('express');
-const Datastore = require('nedb')
+import 'dotenv/config'
+import express from 'express';
+import Datastore from 'nedb'
+import fetch from 'node-fetch';
 
 const PORT = 3000;
 
@@ -31,4 +33,26 @@ app.post('/api', (request, response) => {
     data.timestamp = timestamp
     database.insert(data)
     response.json(data)
+})
+
+app.get('/weather/:latlon', async (request, response) => {
+  // OPEN WEATHER API
+  const latlon = request.params.latlon.split(',')
+  const lat = latlon[0]
+  const lon = latlon[1].trim()
+  
+  const api_key = process.env.API_KEY
+  const weather_url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api_key}&units=metric`
+  const weather_response = await fetch(weather_url)
+  const weather_data = await weather_response.json()
+ 
+  const air_url = `https://api.openaq.org/v2/latest?coordinates=${lat},${lon}`
+  const air_response = await fetch(air_url)
+  const air_data = await air_response.json()
+  
+  const data = {
+    weather: weather_data,
+    air: air_data
+  }
+  response.json(data)
 })
