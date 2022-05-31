@@ -3,13 +3,13 @@ import express from 'express';
 import Datastore from 'nedb'
 import fetch from 'node-fetch';
 
-const PORT = 3000;
+const port = process.env.PORT || 3000;
 
 const app = express();
 app.use(express.static('public'));
 app.use(express.json({ limit: '1mb' }))
-app.listen(PORT, () =>
-  console.log(`server is at: http://localhost:${PORT}.`)
+app.listen(port, () =>
+  console.log(`server is at: http://localhost:${port}.`)
 )
 
 const database = new Datastore('database.db')
