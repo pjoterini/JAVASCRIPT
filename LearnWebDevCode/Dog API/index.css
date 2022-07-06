@@ -1,0 +1,45 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    height: 30%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    text-transform: uppercase;
+}
+
+.slideshow {
+    height: 70%;
+    position: relative;
+    background-color: rgb(86, 86, 86);
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transform: scale(1);
+    transition: all 1s ease-out;
+}
+
+.slide:nth-last-child(2) {
+    opacity: 1;
+    transform: scale(1.08);
+}
